@@ -6,10 +6,10 @@
 #### MSI安装
 >官网下载，Typical安装，默认选项即可(自行更改安装路径)。
 - 配置Mysql
->1.运行MySQLInstanceConfig.exe 
->2.选择标准配置
->3.安装为Windows服务
->4.设置密码
->5.勾选设置选项
+>1.运行MySQLInstanceConfig.exe   
+>2.选择标准配置  
+>3.安装为Windows服务  
+>4.设置密码   
+>5.勾选设置选项  
 
 
