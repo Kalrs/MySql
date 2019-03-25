@@ -1,0 +1,60 @@
+CREATE TABLE Student(
+    Sno CHAR(10) PRIMARY KEY,    /* 列级完整性约束条件，Sno是主键 */
+    Sname CHAR(20) UNIQUE,       /* Sname 取唯一值 */
+    Ssex bit,                    /* 用布尔类型，01表示男女 */
+    Sage SMALLINT,
+    Sdept CHAR(20)
+);
+
+/* 建立一个"课程表Course" */
+CREATE TABLE Course(
+    Cno CHAR(4) PRIMARY KEY,      /* 列级完整性约束条件，Cno是主键 */
+    Cname CHAR(40) NOT NULL,      /* 列级完整性约束条件，Cname不能取空值 */
+    Ccredit SMALLINT             
+);
+
+/* 建立一个"选课表SC" */
+CREATE TABLE SC(
+    Sno CHAR(10),
+    Cno CHAR(4),
+    Grade SMALLINT,
+         /* 主键由两个属性构成，必须作为表级完整性进行定义 */
+   /* FOREIGN KEY(Sno) REFERENCES Student(Sno),*/
+                                   /* 表级完整性约束条件，Sno是外键，被参照表是Student */
+   /* FOREIGN KEY(Cno) REFERENCES Course(Cno) */
+                                   /* 表级完整性约束条件，Cno是外键，被参照表是Course */
+);
+drop table SC;
+
+insert into Student  values('2017110131','李某某',1,20,'CS');
+insert into Student  values('2017110132','赵某某',0,21,'CS');
+insert into Student  values('2017110133','王某某',1,19,'CS');
+select Sno,Sname from Student;
+select * from Student;
+select * from Student where Ssex like 1;
+
+delete from Student where Sno ='2017110133';
+
+INSERT INTO Course
+    VALUES('0001','数据库',5);
+    
+INSERT INTO Course(Cno,Cname,Ccredit)
+    VALUES('0002','数据结构',4);
+    
+INSERT INTO Course(Cname,Cno)
+    VALUES('操作系统','0003');
+   
+select * from Course;
+select * from Course where Cno = '0001'
+
+
+UPDATE Course SET Ccredit = 2  WHERE Cname= '操作系统';
+UPDATE Course SET Ccredit = 1  WHERE Cno=0001;
+
+insert into SC (Sno,Cno,Grade) values ('01','1',99);
+insert into SC (Sno,Cno,Grade) values ('03','2',56);
+insert into SC (Sno,Cno) values ('05','3');
+
+select * from SC;
+
+
